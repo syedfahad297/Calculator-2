@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #cac7c7;
+    }
+
+    .box {
+        margin: 10px auto;
+        width: 400px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 2px 0px 20px 1px rgba(0, 0, 0, 0.542);
+        background-color: #fff;
+        justify-content: center;
+    }
+
+    .input-box {
+        padding: 10px;
+    }
+
+    input {
+        width: 350px;
+        height: 70px;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 29px;
+        background-color: rgb(231, 231, 252);
+        border: none;
+        border-bottom: 1px solid black;
+    
+    }
+
+    .but {
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    button {
+        width: 70px;
+        height: 70px;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        font-size: 28px;
+    }
+
+    .b {
+        background-color: #fff;
+        color: blue;
+    }
+
+    .b:hover {
+        background-color: blue;
+        color: #fff;
+    }
+
+    .c {
+        background-color: #fff;
+    }
+
+    .c:hover {
+        background-color: #cac7c7;
+    }
+</style>
+
+<body>
+    <div class="box">
+        <div class="input-box">
+            <input class="input" type="text" />
+        </div>
+        <div class="but">
+            <button class="button b">C</button>
+            <button class="button b">%</button>
+            <button class="button b">DEL</button>
+            <button class="button b">/</button>
+            <button class="button c">7</button>
+            <button class="button c">8</button>
+            <button class="button c">9</button>
+            <button class="button b">*</button>
+            <button class="button c">4</button>
+            <button class="button c">5</button>
+            <button class="button c">6</button>
+            <button class="button b">-</button>
+            <button class="button c">1</button>
+            <button class="button c">2</button>
+            <button class="button c">3</button>
+            <button class="button b">+</button>
+            <button class="b"><i class="ri-fire-line"></i></button>
+            <button class="button c">0</button>
+            <button class="button c">.</button>
+            <button class="button b">=</button>
+        </div>
+    </div>
+</body>
+<script>
+    let string = "";
+    let buttons = document.querySelectorAll('button');
+    Array.from(buttons).forEach((button)=>{
+        button.addEventListener('click',(e)=>{
+            if(e.target.innerHTML == '='){
+                string = eval(string);
+                 document.querySelector('input').value= string
+            }
+            else if(e.target.innerHTML == 'C'){
+                string ="";
+                 document.querySelector('input').value= string
+            }
+            else if(e.target.innerHTML == 'DEL'){
+                string = string.substring(0,string.length - 1);
+                 document.querySelector('input').value= string
+            }
+
+            else{
+            console.log(e.target)
+            string= string + e.target.innerHTML;
+            document.querySelector('input').value= string
+            }
+        })
+    })
+</script>
+
+</html>
